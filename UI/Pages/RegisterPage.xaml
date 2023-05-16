@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Pages.RegisterPage"
+             Title="RegisterPage">
+    <StackLayout Margin="20">
+        <Label Text="Register" FontSize="Large" Margin="10"/>
+        <Entry Placeholder="Email" Keyboard="Email" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Username" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Password" Keyboard="Text" HorizontalTextAlignment="Center" IsPassword="True" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Button Text="Register" Margin="10"/>
+    </StackLayout>
+</ContentPage>
