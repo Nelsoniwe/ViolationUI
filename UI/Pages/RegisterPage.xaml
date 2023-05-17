@@ -5,9 +5,11 @@
              Title="RegisterPage">
     <StackLayout Margin="20">
         <Label Text="Register" FontSize="Large" Margin="10"/>
-        <Entry Placeholder="Email" Keyboard="Email" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Entry Placeholder="Username" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Entry Placeholder="Password" Keyboard="Text" HorizontalTextAlignment="Center" IsPassword="True" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Button Text="Register" Margin="10"/>
+        <Entry Placeholder="Email" x:Name="emailEntry" Keyboard="Email" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Firstname" x:Name="firstnameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Lastname" x:Name="lastnameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Username" x:Name="usernameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Password" x:Name="passwordEntry" Keyboard="Text" HorizontalTextAlignment="Center" IsPassword="True" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Button Text="Register" Margin="10" Clicked="RegisterButton_Clicked"/>
     </StackLayout>
 </ContentPage>

@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UI.Pages.ChoosePage"
              Title="ChoosePage">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout>
-        <Label 
-            Text="Pachalno"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Button Text="Create Application" Clicked="CreateApplicationButton_Clicked" Margin="10"/>
+        <Button Text="Show your Applications" Clicked="ShowOwnApplicationButton_Clicked" Margin="10"/>
+        <Button Text="Resolve Applications" x:Name="ResolveApplications" Margin="10" Clicked="ResolveApplicationButton_Clicked"/>
+        <Button Text="Logout" Margin="10" Clicked="LogoutButton_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

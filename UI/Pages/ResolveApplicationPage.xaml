@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:UI.Models"
+             x:Class="UI.Pages.ResolveApplicationPage"
+             Title="ResolveApplicationPage">
+    <CollectionView x:Name="ApplicationsView">
+        <CollectionView.ItemsSource >
+            <x:Array Type="{x:Type models:RepresentativeApplication}">
+            </x:Array>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout BackgroundColor="#F2F2F2"
+                                  Padding="10"
+                                  Margin="5">
+                    <HorizontalStackLayout>
+                        <Label Text="Mark: "
+                               FontSize="18"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding VehicleMark}"
+                               FontSize="18"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Violation Type: "
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding Violation}"
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Vehicle Type: "
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding VehicleType}"
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Color: "
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding VehicleColor}"
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Vehicle Number: "
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding VehicleNumber}"
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Status: "
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding Status}"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Time: "
+                               FontSize="16"
+                               TextColor="#333333"
+                               Margin="0,0,0,5" />
+                        <Label Text="{Binding ViolationTime}"
+                               FontSize="16"
+                               TextColor="#666666" />
+                    </HorizontalStackLayout>
+                    <Button Text="Resolve" Margin="10" Clicked="ResolveButton_Clicked"/>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

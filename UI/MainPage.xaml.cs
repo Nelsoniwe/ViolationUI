@@ -24,10 +24,55 @@ public partial class MainPage : ContentPage
         ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateValidation;
 
         CheckCredentials();
+        CustomInitializeComponent();
 
         InitializeComponent();
-        emailEntry.TextChanged += OnUsernameTextChanged;
+        emailEntry.TextChanged += OnEmailTextChanged;
         passwordEntry.TextChanged += OnPasswordTextChanged;
+    }
+
+    private async void CustomInitializeComponent()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, MauiProgram.ApiEndpoint + "/api/User/GetProfile");
+        string key = await SecureStorage.Default.GetAsync("api_token");
+
+        request.Headers.Add("Authorization", "Bearer " + key);
+        var userLoginResponse = await _httpClient.SendAsync(request);
+
+        if (!userLoginResponse.IsSuccessStatusCode)
+        {
+            SecureStorage.Default.RemoveAll();
+            await DisplayAlert("Error", userLoginResponse.ReasonPhrase, "OK");
+            await Shell.Current.Navigation.PopToRootAsync();
+        }
+
+        var colorTask = _httpClient.GetAsync(
+            MauiProgram.ApiEndpoint + "/api/VehicleColor");
+        var markTask = _httpClient.GetAsync(
+            MauiProgram.ApiEndpoint + "/api/VehicleMark");
+        var typesTask = _httpClient.GetAsync(
+            MauiProgram.ApiEndpoint + "/api/VehicleType");
+        var violationsTask = _httpClient.GetAsync(
+            MauiProgram.ApiEndpoint + "/api/Violation");
+        var statusesTask = _httpClient.GetAsync(
+            MauiProgram.ApiEndpoint + "/api/ApplicationStatus");
+
+        var tasks = new List<Task<HttpResponseMessage>>() { colorTask, markTask, typesTask, violationsTask, statusesTask };
+
+        Task.WaitAll(tasks.ToArray());
+
+        MauiProgram.UserProfile = JsonConvert.DeserializeObject<UserProfileModel>(await userLoginResponse.Content.ReadAsStringAsync());
+        MauiProgram.Colors = JsonConvert.DeserializeObject<List<VehicleColorModel>>(await colorTask.Result.Content.ReadAsStringAsync());
+        MauiProgram.Marks = JsonConvert.DeserializeObject<List<VehicleMarkModel>>(await markTask.Result.Content.ReadAsStringAsync());
+        MauiProgram.Types = JsonConvert.DeserializeObject<List<VehicleTypeModel>>(await typesTask.Result.Content.ReadAsStringAsync());
+        MauiProgram.Violations = JsonConvert.DeserializeObject<List<ViolationModel>>(await violationsTask.Result.Content.ReadAsStringAsync());
+        MauiProgram.Statuses = JsonConvert.DeserializeObject<List<ApplicationStatus>>(await statusesTask.Result.Content.ReadAsStringAsync());
+    }
+
+    private void OnBackButtonPressed(object sender, BackButtonPressedEventArgs e)
+    {
+        // Block the back button action
+        e.Handled = true;
     }
 
     private static bool IgnoreCertificateValidation(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
@@ -35,7 +80,7 @@ public partial class MainPage : ContentPage
         return true; // Allow any certificate
     }
 
-    private void OnUsernameTextChanged(object sender, TextChangedEventArgs e)
+    private void OnEmailTextChanged(object sender, TextChangedEventArgs e)
     {
         _email = e.NewTextValue;
     }
@@ -70,6 +115,11 @@ public partial class MainPage : ContentPage
 
             await SecureStorage.Default.SetAsync("api_token", userData.UserToken);
             await SecureStorage.Default.SetAsync("user_id", userData.UserId.ToString());
+
+            if (userData.Roles.Contains("Admin"))
+                await SecureStorage.Default.SetAsync("user_role", "Admin");
+            else
+                await SecureStorage.Default.SetAsync("user_role", "User");
 
             await Navigation.PushAsync(new ChoosePage());
         }
