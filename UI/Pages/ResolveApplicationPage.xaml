@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:UI.Models"
              x:Class="UI.Pages.ResolveApplicationPage"
-             Title="ResolveApplicationPage">
+             Title="Вирішення заявки">
     <CollectionView x:Name="ApplicationsView">
         <CollectionView.ItemsSource >
             <x:Array Type="{x:Type models:RepresentativeApplication}">
@@ -14,77 +14,126 @@
                 <StackLayout BackgroundColor="#F2F2F2"
                                   Padding="10"
                                   Margin="5">
-                    <HorizontalStackLayout>
-                        <Label Text="Mark: "
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Марка транспортного засобу: "
                                FontSize="18"
-                               TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               TextColor="#666666"
+                               Margin="0,0,0,5" 
+                               Grid.Column="0"/>
                         <Label Text="{Binding VehicleMark}"
                                FontSize="18"
                                TextColor="#333333"
-                               Margin="0,0,0,5" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Violation Type: "
+                               FontAttributes="Bold"
+                               Margin="0,0,0,5" 
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Тип правопорушення: "
                                FontSize="16"
-                               TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               TextColor="#666666"
+                               Margin="0,0,0,5" 
+                               Grid.Column="0"/>
                         <Label Text="{Binding Violation}"
                                FontSize="16"
-                               TextColor="#666666"
-                               Margin="0,0,0,5" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Vehicle Type: "
-                               FontSize="16"
                                TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               FontAttributes="Bold"
+                               Margin="0,0,0,5"  
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Тип транспортного засобу: "
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" 
+                               Grid.Column="0"/>
                         <Label Text="{Binding VehicleType}"
                                FontSize="16"
-                               TextColor="#666666"
-                               Margin="0,0,0,5" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Color: "
-                               FontSize="16"
                                TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               FontAttributes="Bold"
+                               Margin="0,0,0,5" 
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Колір транспортного засобу: "
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" 
+                               Grid.Column="0"/>
                         <Label Text="{Binding VehicleColor}"
                                FontSize="16"
-                               TextColor="#666666"
-                               Margin="0,0,0,5" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Vehicle Number: "
-                               FontSize="16"
                                TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               FontAttributes="Bold"
+                               Margin="0,0,0,5" 
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Номер транспортного засобу: "
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5" 
+                               Grid.Column="0" />
                         <Label Text="{Binding VehicleNumber}"
                                FontSize="16"
-                               TextColor="#666666"
-                               Margin="0,0,0,5" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Status: "
-                               FontSize="16"
                                TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               Margin="0,0,0,5"  
+                               FontAttributes="Bold"
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Стутс заявки: "
+                               FontSize="16"
+                               TextColor="#666666"
+                               Margin="0,0,0,5"  
+                               Grid.Column="0" />
                         <Label Text="{Binding Status}"
                                FontAttributes="Bold"
                                FontSize="16"
                                TextColor="#333333"
-                               Margin="0,0,0,5" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Time: "
+                               Margin="0,0,0,5"  
+                               Grid.Column="1" />
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Час правопорушення: "
                                FontSize="16"
-                               TextColor="#333333"
-                               Margin="0,0,0,5" />
+                               TextColor="#666666"
+                               Margin="0,0,0,5"
+                               Grid.Column="0"/>
                         <Label Text="{Binding ViolationTime}"
                                FontSize="16"
-                               TextColor="#666666" />
-                    </HorizontalStackLayout>
-                    <Button Text="Resolve" Margin="10" Clicked="ResolveButton_Clicked"/>
+                               FontAttributes="Bold"
+                               TextColor="#333333"
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Button Text="Переглянути профіль користувача" Margin="10" Clicked="ResolveUserProfile_Clicked"/>
+                    <Button Text="Розглянути" Margin="10" Clicked="ResolveButton_Clicked"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

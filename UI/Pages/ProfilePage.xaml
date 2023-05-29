@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI.Pages.ProfilePage"
+             Title="Профіль">
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Ім'я:" 
+                   FontSize="20"
+                   TextColor="#333333"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Padding="5"
+                   Margin="5"
+                   Grid.Column="0"/>
+            <Entry x:Name="FirstNameEntry"
+                   Placeholder="Enter text"
+                   HorizontalTextAlignment="Center" 
+                   Keyboard="Text" 
+                   Margin="10" 
+                   BackgroundColor="#F2F2F2"
+                   Grid.Column="1"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Прізвище:" 
+                   FontSize="20"
+                   TextColor="#333333"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Padding="5"
+                   Margin="5"
+                   Grid.Column="0"/>
+            <Entry x:Name="SecondNameEntry"
+                   Placeholder="Enter text"
+                   HorizontalTextAlignment="Center" 
+                   Keyboard="Text" 
+                   Margin="10" 
+                   BackgroundColor="#F2F2F2"
+                   Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Псевдонім:" 
+                   FontSize="20"
+                   TextColor="#333333"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Padding="5"
+                   Margin="5"
+                   Grid.Column="0"/>
+            <Entry x:Name="UserNameEntry"
+                   Placeholder="Enter text"
+                   HorizontalTextAlignment="Center" 
+                   Keyboard="Text" 
+                   Margin="10" 
+                   BackgroundColor="#F2F2F2"
+                   Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Електронна пошта:" 
+                   FontSize="20"
+                   TextColor="#333333"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Padding="5"
+                   Margin="5"
+                   Grid.Column="0"/>
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Enter text"
+                   HorizontalTextAlignment="Center" 
+                   Keyboard="Text" 
+                   Margin="10" 
+                   BackgroundColor="#F2F2F2"
+                   Grid.Column="1"/>
+        </Grid>
+
+        <Button Text="Оновити профіль" Margin="10" Clicked="UpdateButton_Clicked"/>
+        <Button Text="Видалити профіль" Margin="10" Clicked="DeleteButton_Clicked" BackgroundColor="Red"/>
+    </VerticalStackLayout>
+</ContentPage>

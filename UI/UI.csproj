@@ -54,12 +54,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\ApplicationDetails.xaml.cs">
+	    <DependentUpon>ApplicationDetails.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ApplicationListWithSearch.xaml.cs">
+	    <DependentUpon>ApplicationListWithSearch.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ApplicationSearchFilterPage.xaml.cs">
+	    <DependentUpon>ApplicationSearchFilterPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\ChangeApplicationDataPage.xaml.cs">
 	    <DependentUpon>ChangeApplicationDataPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\ChangeApplicationDataUserPage.xaml.cs">
+	    <DependentUpon>ChangeApplicationDataUserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\UserProfilePage.xaml.cs">
+	    <DependentUpon>UserProfilePage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\ApplicationSearchFilterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\ChangeApplicationDataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -69,6 +87,9 @@
 	  <MauiXaml Update="Pages\CreateApplicationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -76,6 +97,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ShowOwnApplicationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\UserProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -33,13 +33,13 @@ public partial class MainPage : ContentPage
 
     private async void CustomInitializeComponent()
     {
-        var request = new HttpRequestMessage(HttpMethod.Get, MauiProgram.ApiEndpoint + "/api/User/GetProfile");
+        var request = new HttpRequestMessage(HttpMethod.Get, MauiProgram.ApiEndpoint + "/api/User/Profile");
         string key = await SecureStorage.Default.GetAsync("api_token");
 
         request.Headers.Add("Authorization", "Bearer " + key);
         var userLoginResponse = await _httpClient.SendAsync(request);
 
-        if (!userLoginResponse.IsSuccessStatusCode)
+        if (key != null && !userLoginResponse.IsSuccessStatusCode)
         {
             SecureStorage.Default.RemoveAll();
             await DisplayAlert("Error", userLoginResponse.ReasonPhrase, "OK");

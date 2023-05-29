@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UI.Pages.ChoosePage"
-             Title="ChoosePage">
+             Title="Головна сторінка">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
-    <VerticalStackLayout>
-        <Button Text="Create Application" Clicked="CreateApplicationButton_Clicked" Margin="10"/>
-        <Button Text="Show your Applications" Clicked="ShowOwnApplicationButton_Clicked" Margin="10"/>
-        <Button Text="Resolve Applications" x:Name="ResolveApplications" Margin="10" Clicked="ResolveApplicationButton_Clicked"/>
-        <Button Text="Logout" Margin="10" Clicked="LogoutButton_Clicked"/>
+    <VerticalStackLayout VerticalOptions="Fill">
+        <Button Text="Створити заявку" Clicked="CreateApplicationButton_Clicked" Margin="10"/>
+        <Button Text="Профіль" Clicked="ProfileButton_Clicked" Margin="10"/>
+        <Button Text="Оглянути власні заявки" Clicked="ShowOwnApplicationButton_Clicked" Margin="10"/>
+        <Button Text="Пошук заявок" x:Name="SearchApplications" Clicked="SearchApplicationButton_Clicked" Margin="10"/>
+        <Button Text="Вирішити заявки" x:Name="ResolveApplications" Margin="10" Clicked="ResolveApplicationButton_Clicked"/>
+        <Button Text="Вийти з системи" Margin="10" Clicked="LogoutButton_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

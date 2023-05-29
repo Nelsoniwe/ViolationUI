@@ -15,4 +15,6 @@ public class ApplicationModel
     public DateTime ViolationTime { get; set; }
     public int? PhotoId { get; set; }
     public int? VideoId { get; set; }
+    public string AdminComment { get; set; } = "";
+    public string UserComment { get; set; } = "";
 }

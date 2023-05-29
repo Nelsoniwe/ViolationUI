@@ -20,4 +20,7 @@ public class RepresentativeApplication
     public int StatusId { get; set; }
     public int? PhotoId { get; set; }
     public int? VideoId { get; set; }
+    public bool UserCanChange { get; set; }
+    public string AdminComment { get; set; } = "";
+    public string UserComment { get; set; } = "";
 }

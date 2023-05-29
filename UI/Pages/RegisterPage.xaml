@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="UI.Pages.RegisterPage"
-             Title="RegisterPage">
+             Title="Реєстрація">
     <StackLayout Margin="20">
-        <Label Text="Register" FontSize="Large" Margin="10"/>
-        <Entry Placeholder="Email" x:Name="emailEntry" Keyboard="Email" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Entry Placeholder="Firstname" x:Name="firstnameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Entry Placeholder="Lastname" x:Name="lastnameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Entry Placeholder="Username" x:Name="usernameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Entry Placeholder="Password" x:Name="passwordEntry" Keyboard="Text" HorizontalTextAlignment="Center" IsPassword="True" Margin="10" BackgroundColor="#F2F2F2"/>
-        <Button Text="Register" Margin="10" Clicked="RegisterButton_Clicked"/>
+        <Label Text="Реєстрація" FontSize="Large" Margin="10"/>
+        <Entry Placeholder="Електронна пошта" x:Name="emailEntry" Keyboard="Email" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Ім'я" x:Name="firstnameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Прізвище" x:Name="lastnameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Псевдонім" x:Name="usernameEntry" Keyboard="Text" HorizontalTextAlignment="Center" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Пароль" x:Name="passwordEntry" Keyboard="Text" HorizontalTextAlignment="Center" IsPassword="True" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Entry Placeholder="Пароль повторно" x:Name="repeatPasswordEntry" Keyboard="Text" HorizontalTextAlignment="Center" IsPassword="True" Margin="10" BackgroundColor="#F2F2F2"/>
+        <Button Text="Зареєструватись" Margin="10" Clicked="RegisterButton_Clicked"/>
     </StackLayout>
 </ContentPage>

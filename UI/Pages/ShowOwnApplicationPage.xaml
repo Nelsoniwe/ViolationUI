@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:UI.Models"
              x:Class="UI.Pages.ShowOwnApplicationPage"
-             Title="ShowOwnApplicationPage">
+             Title="Власні заявки">
     <CollectionView x:Name="ApplicationsView">
         <CollectionView.ItemsSource >
             <x:Array Type="{x:Type models:RepresentativeApplication}">
@@ -15,7 +15,7 @@
                                   Padding="10"
                                   Margin="5">
                     <HorizontalStackLayout>
-                        <Label Text="Mark: "
+                        <Label Text="Марка: "
                                FontSize="18"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -25,7 +25,7 @@
                                Margin="0,0,0,5" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Violation Type: "
+                        <Label Text="Правопорушення: "
                                FontSize="16"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -35,7 +35,7 @@
                                Margin="0,0,0,5" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Vehicle Type: "
+                        <Label Text="Тип транспортного засобу: "
                                FontSize="16"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -45,7 +45,7 @@
                                Margin="0,0,0,5" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Color: "
+                        <Label Text="Колір: "
                                FontSize="16"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -55,7 +55,7 @@
                                Margin="0,0,0,5" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Vehicle Number: "
+                        <Label Text="Номер транспортного засобу: "
                                FontSize="16"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -65,7 +65,7 @@
                                Margin="0,0,0,5" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Status: "
+                        <Label Text="Статус заявки: "
                                FontSize="16"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -76,7 +76,7 @@
                                Margin="0,0,0,5" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Time: "
+                        <Label Text="Час правопорушення: "
                                FontSize="16"
                                TextColor="#333333"
                                Margin="0,0,0,5" />
@@ -84,6 +84,8 @@
                                FontSize="16"
                                TextColor="#666666" />
                     </HorizontalStackLayout>
+                    <Button Text="Деталі" x:Name="DetailsButton" Margin="10" Clicked="DetailsButton_Clicked"/>
+                    <Button Text="Змінити" x:Name="ChangeButton" Margin="10" Clicked="ChangeButton_Clicked" IsVisible="{Binding UserCanChange}"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

@@ -1,22 +1,20 @@
-﻿using Android.Service.QuickSettings;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using UI.Models;
 
 namespace UI.Pages;
 
-public partial class ChangeApplicationDataPage : ContentPage
+public partial class ChangeApplicationDataUserPage : ContentPage
 {
     private readonly HttpClient _httpClient;
     private string _vehicleNumber;
     private RepresentativeApplication _selectedItem;
 
-    public ChangeApplicationDataPage(RepresentativeApplication selectedItem)
+    public ChangeApplicationDataUserPage(RepresentativeApplication selectedItem)
     {
         InitializeComponent();
 
@@ -32,7 +30,6 @@ public partial class ChangeApplicationDataPage : ContentPage
         VehicleColorPicker.SelectedItem = selectedItem.VehicleColor;
         VehicleNumberEntry.Text = selectedItem.VehicleNumber;
         ViolationDate.Date = selectedItem.ViolationTime;
-        PublicationDate.Date = selectedItem.PublicationTime;
 
         _selectedItem = selectedItem;
     }
@@ -42,19 +39,60 @@ public partial class ChangeApplicationDataPage : ContentPage
         _vehicleNumber = e.NewTextValue;
     }
 
-    private async void ApproveButton_Clicked(object sender, EventArgs e)
-    {
-        ChangeApplication("Approved");
-    }
-
     private async void UpdateButton_Clicked(object sender, EventArgs e)
     {
-        ChangeApplication(null);
+        ChangeApplication();
     }
 
-    private async void RejectButton_Clicked(object sender, EventArgs e)
+
+    private async void ChangeApplication()
     {
-        ChangeApplication("Rejected");
+        try
+        {
+            ApplicationModel application = new ApplicationModel()
+            {
+                Id = _selectedItem.Id,
+                UserId = _selectedItem.UserId,
+                VehicleMarkId = MauiProgram.Marks.FirstOrDefault(x => x.Type == VehicleMarkPicker.SelectedItem).Id,
+                ViolationId = MauiProgram.Violations.FirstOrDefault(x => x.Type == ViolationPicker.SelectedItem).Id,
+                VehicleTypeId = MauiProgram.Types.FirstOrDefault(x => x.Type == VehicleTypePicker.SelectedItem).Id,
+                VehicleColorId = MauiProgram.Colors.FirstOrDefault(x => x.Type == VehicleColorPicker.SelectedItem).Id,
+                VehicleNumber = _vehicleNumber,
+                StatusId = _selectedItem.StatusId,
+                Geolocation = "string",
+                PublicationTime = _selectedItem.PublicationTime,
+                ViolationTime = ViolationDate.Date,
+                PhotoId = _selectedItem.PhotoId,
+                VideoId = _selectedItem.VideoId
+            };
+
+            string jsonData = System.Text.Json.JsonSerializer.Serialize(application);
+            HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, MauiProgram.ApiEndpoint + "/api/Application");
+            request.Content = content;
+            string key = await SecureStorage.Default.GetAsync("api_token");
+
+            request.Headers.Add("Authorization", "Bearer " + key);
+
+            HttpResponseMessage response = await _httpClient.SendAsync(request);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                SecureStorage.Default.RemoveAll();
+                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await Shell.Current.Navigation.PopToRootAsync();
+            }
+            else
+            {
+                await DisplayAlert("Успіх", "", "OK");
+                await Shell.Current.Navigation.PopAsync();
+            }
+        }
+        catch (Exception exception)
+        {
+            await DisplayAlert("Помилка", exception.Message, "OK");
+        }
     }
 
     private async void DownloadAttachedFile_Clicked(object sender, EventArgs e)
@@ -88,59 +126,6 @@ public partial class ChangeApplicationDataPage : ContentPage
             {
                 File = new ReadOnlyFile(filePath)
             });
-
-        }
-        catch (Exception exception)
-        {
-            await DisplayAlert("Помилка", exception.Message, "OK");
-        }
-    }
-
-    private async void ChangeApplication(string status)
-    {
-        try
-        {
-            ApplicationModel application = new ApplicationModel()
-            {
-                Id = _selectedItem.Id,
-                UserId = _selectedItem.UserId,
-                VehicleMarkId = MauiProgram.Marks.FirstOrDefault(x => x.Type == VehicleMarkPicker.SelectedItem).Id,
-                ViolationId = MauiProgram.Violations.FirstOrDefault(x => x.Type == ViolationPicker.SelectedItem).Id,
-                VehicleTypeId = MauiProgram.Types.FirstOrDefault(x => x.Type == VehicleTypePicker.SelectedItem).Id,
-                VehicleColorId = MauiProgram.Colors.FirstOrDefault(x => x.Type == VehicleColorPicker.SelectedItem).Id,
-                VehicleNumber = _vehicleNumber,
-                StatusId = String.IsNullOrEmpty(status) ? _selectedItem.StatusId : MauiProgram.Statuses.FirstOrDefault(x => x.Status == status).Id,
-                Geolocation = "string",
-                PublicationTime = PublicationDate.Date,
-                ViolationTime = ViolationDate.Date,
-                PhotoId = _selectedItem.PhotoId,
-                VideoId = _selectedItem.VideoId,
-                UserComment = _selectedItem.UserComment,
-                AdminComment = AdminCommentEntry.Text ?? String.Empty
-            };
-
-            string jsonData = System.Text.Json.JsonSerializer.Serialize(application);
-            HttpContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, MauiProgram.ApiEndpoint + "/api/Application");
-            request.Content = content;
-            string key = await SecureStorage.Default.GetAsync("api_token");
-
-            request.Headers.Add("Authorization", "Bearer " + key);
-
-            HttpResponseMessage response = await _httpClient.SendAsync(request);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
-                await Shell.Current.Navigation.PopToRootAsync();
-            }
-            else
-            {
-                await DisplayAlert("Успіх", "", "OK");
-                await Shell.Current.Navigation.PopAsync();
-            }
         }
         catch (Exception exception)
         {
