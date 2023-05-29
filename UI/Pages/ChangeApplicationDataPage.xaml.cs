@@ -1,5 +1,4 @@
-﻿using Android.Service.QuickSettings;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,7 +132,7 @@ public partial class ChangeApplicationDataPage : ContentPage
             if (!response.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
             else

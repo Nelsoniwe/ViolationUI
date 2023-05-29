@@ -59,13 +59,21 @@ public partial class ApplicationSearchFilterPage : ContentPage
                 StatusId = MauiProgram.Statuses.FirstOrDefault(x => x.Status == StatusPicker.SelectedItem)?.Id,
                 PublicationTime = _publicationDate,
                 ViolationTime = _violationDate,
-                VehicleNumber = VehicleNumberEntry.Text
+                VehicleNumber = VehicleNumberEntry.Text,
+                UserEmail = EmailEntry.Text
             };
 
             var connectionString = MauiProgram.ApiEndpoint + "/api/Application/ByFilter?" + applicationFilter.GetFilterString();
             HttpRequestMessage applicationsRequest = new HttpRequestMessage(HttpMethod.Get, connectionString);
 
             HttpResponseMessage response = await _httpClient.SendAsync(applicationsRequest);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Помилка", "Виникла помилка з вхідними даними", "OK");
+                return;
+            }
+
             var _applications = JsonConvert.DeserializeObject<List<ApplicationModel>>(await response.Content.ReadAsStringAsync());
 
             string role = await SecureStorage.Default.GetAsync("user_role");

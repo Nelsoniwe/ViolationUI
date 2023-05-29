@@ -10,6 +10,7 @@ public class ApplicationFilter
     public int? StatusId { get; set; }
     public DateTime? PublicationTime { get; set; }
     public DateTime? ViolationTime { get; set; }
+    public string UserEmail { get; set; }
 
     public string GetFilterString()
     {
@@ -53,6 +54,11 @@ public class ApplicationFilter
         if (ViolationTime != DateTime.MinValue)
         {
             filters.Add($"ViolationTime={ViolationTime}");
+        }
+
+        if (!string.IsNullOrEmpty(UserEmail))
+        {
+            filters.Add($"UserEmail={Uri.EscapeDataString(UserEmail)}");
         }
 
         return string.Join("&", filters);

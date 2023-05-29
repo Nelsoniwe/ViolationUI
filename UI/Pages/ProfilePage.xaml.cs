@@ -16,17 +16,16 @@ public partial class ProfilePage : ContentPage
         CustomInitializeComponent();
     }
 
-    private async void UpdateButton_Clicked(object sender, EventArgs e)
-    {
-        ChangeUserData();
-    }
+    private void UpdateButton_Clicked(object sender, EventArgs e) => ChangeUserData();
+    private async void UpdatePassword_Clicked(object sender, EventArgs e) => await Navigation.PushAsync(new ChangePasswordPage());
+
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
         bool userConfirmation = await DisplayAlert("Підтвердження", "Ви впевнені що хочете видалити власний профіль?", "Так", "Ні");
         if (userConfirmation)
         {
-            var request = new HttpRequestMessage(HttpMethod.Delete, MauiProgram.ApiEndpoint + "/User/Delete");
+            var request = new HttpRequestMessage(HttpMethod.Delete, MauiProgram.ApiEndpoint + "/api/User/Delete");
             string key = await SecureStorage.Default.GetAsync("api_token");
             request.Headers.Add("Authorization", "Bearer " + key);
             HttpResponseMessage response = await _httpClient.SendAsync(request);
@@ -39,7 +38,7 @@ public partial class ProfilePage : ContentPage
             }
             else
             {
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
             }
         }
     }
@@ -71,7 +70,7 @@ public partial class ProfilePage : ContentPage
             if (!response.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
             else

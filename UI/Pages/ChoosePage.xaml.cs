@@ -40,7 +40,7 @@ public partial class ChoosePage : ContentPage
             if (key != null && !userLoginResponse.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", userLoginResponse.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await userLoginResponse.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
 

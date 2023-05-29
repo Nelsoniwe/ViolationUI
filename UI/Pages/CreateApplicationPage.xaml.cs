@@ -208,7 +208,7 @@ public partial class CreateApplicationPage : ContentPage
             else
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", fileResponse.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await fileResponse.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
 
@@ -230,7 +230,7 @@ public partial class CreateApplicationPage : ContentPage
             if (!response.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
             else

@@ -1,130 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UI.Pages.ApplicationDetails"
-             Title="Деталі заявки">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="UI.Pages.ApplicationDetails"
+    Title="Деталі заявки">
     <ContentPage.Content>
-        <ScrollView VerticalOptions="FillAndExpand">
+        <ScrollView
+            VerticalOptions="FillAndExpand">
             <VerticalStackLayout>
-                <Label Text="Тип транспортного засобу:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="VehicleTypeLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Марка транспортного засобу:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="VehicleMarkLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Колір транспортного засобу:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="VehicleColorLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Тип порушення:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="ViolationLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Номер транспортного засобу:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="VehicleNumberLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Час порушення:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="ViolationTimeLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Час публікації:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="PublicationDateLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Статус:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="StatusLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Label Text="Коментар:" 
-               FontSize="20"
-               TextColor="#333333"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"
-               Padding="5"
-               Margin="5"/>
-                <Label x:Name="CommentLabel"
-               FontSize="20"
-               BackgroundColor="#F2F2F2"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               Margin="5"/>
-                <Button Text="Завантажити прикріплений файл" Margin="10" Clicked="DownloadAttachedFile_Clicked"/>
+                <Label
+                    Text="Тип транспортного засобу:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="VehicleTypeLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Марка транспортного засобу:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="VehicleMarkLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Колір транспортного засобу:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="VehicleColorLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Тип порушення:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="ViolationLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Номер транспортного засобу:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="VehicleNumberLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Час порушення:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="ViolationTimeLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Час публікації:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="PublicationDateLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Статус:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="StatusLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Label
+                    Text="Коментар:"
+                    FontSize="20"
+                    TextColor="#333333"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Padding="5"
+                    Margin="5" />
+                <Label
+                    x:Name="CommentLabel"
+                    FontSize="20"
+                    BackgroundColor="#F2F2F2"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    Margin="5" />
+                <Button
+                    Text="Завантажити прикріплений файл"
+                    Margin="10"
+                    Clicked="DownloadAttachedFile_Clicked" />
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage.Content>

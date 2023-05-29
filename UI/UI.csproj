@@ -30,12 +30,52 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>Road Violation Send</ApplicationTitle>
+	  <ApplicationId>com.Nelsoniwe.RoadViolationSend</ApplicationId>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#3E5C76" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#3E5C76" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -69,6 +109,9 @@
 	  <Compile Update="Pages\ChangeApplicationDataUserPage.xaml.cs">
 	    <DependentUpon>ChangeApplicationDataUserPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\ChangePasswordPage.xaml.cs">
+	    <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\UserProfilePage.xaml.cs">
 	    <DependentUpon>UserProfilePage.xaml</DependentUpon>
 	  </Compile>
@@ -79,6 +122,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ChangeApplicationDataPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ChangePasswordPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ChoosePage.xaml">

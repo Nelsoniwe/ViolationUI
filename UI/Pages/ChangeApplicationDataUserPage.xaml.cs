@@ -80,7 +80,7 @@ public partial class ChangeApplicationDataUserPage : ContentPage
             if (!response.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
             else

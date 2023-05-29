@@ -47,7 +47,7 @@ public partial class ShowOwnApplicationPage : ContentPage
             if (!userLoginResponse.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", userLoginResponse.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", await userLoginResponse.Content.ReadAsStringAsync(), "OK");
                 await Shell.Current.Navigation.PopToRootAsync();
             }
             _userProfile = JsonConvert.DeserializeObject<UserProfileModel>(await userLoginResponse.Content.ReadAsStringAsync());
@@ -61,7 +61,7 @@ public partial class ShowOwnApplicationPage : ContentPage
             if (!response.IsSuccessStatusCode)
             {
                 SecureStorage.Default.RemoveAll();
-                await DisplayAlert("Помилка", response.ReasonPhrase, "OK");
+                await DisplayAlert("Помилка", "Заявок не знайдено в системі", "OK");
                 return;
             }
 

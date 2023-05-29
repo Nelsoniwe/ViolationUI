@@ -42,7 +42,7 @@ public partial class MainPage : ContentPage
         if (key != null && !userLoginResponse.IsSuccessStatusCode)
         {
             SecureStorage.Default.RemoveAll();
-            await DisplayAlert("Error", userLoginResponse.ReasonPhrase, "OK");
+            await DisplayAlert("Помилка", await userLoginResponse.Content.ReadAsStringAsync(), "OK");
             await Shell.Current.Navigation.PopToRootAsync();
         }
 
@@ -125,7 +125,7 @@ public partial class MainPage : ContentPage
         }
         else
         {
-            await DisplayAlert("Error", "Wrong credentials", "OK");
+            await DisplayAlert("Помилка", "Перевірте корректність введених даних", "OK");
         }
     }
 

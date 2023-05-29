@@ -1,117 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UI.Pages.ChangeApplicationDataPage"
-             Title="Вирішення заявки">
-    <ScrollView VerticalOptions="FillAndExpand">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="UI.Pages.ChangeApplicationDataPage"
+    Title="Вирішення заявки">
+    <ScrollView
+        VerticalOptions="FillAndExpand">
         <VerticalStackLayout>
-            <Label Text="Виберіть тип транспортного засобу" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
-            <Picker x:Name="VehicleTypePicker"
-            Title="Тип транспортного засобу"
-            BackgroundColor="#F2F2F2"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            Margin="5"/>
-            <Label Text="Змінити марку транспортного засобу" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
-            <Picker x:Name="VehicleMarkPicker"
-            Title="Марка транспортного засобу"
-            BackgroundColor="#F2F2F2"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            Margin="5"/>
-            <Label Text="Змінити колір транспортного засобу" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
-            <Picker x:Name="VehicleColorPicker"
-            Title="Колір транспортного засобу"
-            BackgroundColor="#F2F2F2"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            Margin="5"/>
-            <Label Text="Змінити тип порушення" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
-            <Picker x:Name="ViolationPicker"
-            Title="Порушення"
-            BackgroundColor="#F2F2F2"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            Margin="5"/>
-            <Label Text="Змінити номер транспортного засобу" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
-            <Entry x:Name="VehicleNumberEntry"
-           Placeholder="Введіть текст"
-           HorizontalTextAlignment="Center" 
-           Keyboard="Text" 
-           Margin="10" 
-           BackgroundColor="#F2F2F2"/>
-            <Label Text="Змінити час порушення" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
+            <Label
+                Text="Виберіть тип транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="VehicleTypePicker"
+                Title="Тип транспортного засобу"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Змінити марку транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="VehicleMarkPicker"
+                Title="Марка транспортного засобу"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Змінити колір транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="VehicleColorPicker"
+                Title="Колір транспортного засобу"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Змінити тип порушення"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="ViolationPicker"
+                Title="Порушення"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Змінити номер транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Entry
+                x:Name="VehicleNumberEntry"
+                Placeholder="Введіть текст"
+                HorizontalTextAlignment="Center"
+                Keyboard="Text"
+                Margin="10"
+                BackgroundColor="#F2F2F2" />
+            <Label
+                Text="Змінити час порушення"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
             <DatePicker
-        x:Name="ViolationDate"
-        HorizontalOptions="Fill"
-        Margin="10" 
-        BackgroundColor="#F2F2F2"/>
-            <Label Text="Змінити час публікації" 
-           FontSize="20"
-           TextColor="#333333"
-           HorizontalOptions="Start"
-           VerticalOptions="Center"
-           Padding="5"
-           Margin="5"/>
+                x:Name="ViolationDate"
+                HorizontalOptions="Fill"
+                Margin="10"
+                BackgroundColor="#F2F2F2" />
+            <Label
+                Text="Змінити час публікації"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
             <DatePicker
-        x:Name="PublicationDate"
-        HorizontalOptions="Fill"
-        Margin="10" 
-        BackgroundColor="#F2F2F2"/>
-            <Label Text="Додати коментар" 
-                   FontSize="20"
-                   TextColor="#333333"
-                   HorizontalOptions="Start"
-                   VerticalOptions="Center"
-                   Padding="5"
-                   Margin="5"/>
-            <Entry x:Name="AdminCommentEntry"
-                   Placeholder="Введіть текст"
-                   HorizontalTextAlignment="Center" 
-                   Keyboard="Text" 
-                   Margin="10" 
-                   BackgroundColor="#F2F2F2"/>
-            <Button Text="Завантажити прикріплений файл" Margin="10" Clicked="DownloadAttachedFile_Clicked"/>
-            <Button Text="Схвалити" BackgroundColor="Green" Margin="10" Clicked="ApproveButton_Clicked"/>
-            <Button Text="Оновити" Margin="10" Clicked="UpdateButton_Clicked"/>
-            <Button Text="Відхилити" BackgroundColor="Red" Margin="10" Clicked="RejectButton_Clicked"/>
+                x:Name="PublicationDate"
+                HorizontalOptions="Fill"
+                Margin="10"
+                BackgroundColor="#F2F2F2" />
+            <Label
+                Text="Додати коментар"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Entry
+                x:Name="AdminCommentEntry"
+                Placeholder="Введіть текст"
+                HorizontalTextAlignment="Center"
+                Keyboard="Text"
+                Margin="10"
+                BackgroundColor="#F2F2F2" />
+            <Button
+                Text="Завантажити прикріплений файл"
+                Margin="10"
+                Clicked="DownloadAttachedFile_Clicked" />
+            <Button
+                Text="Схвалити"
+                BackgroundColor="Green"
+                Margin="10"
+                Clicked="ApproveButton_Clicked" />
+            <Button
+                Text="Оновити"
+                Margin="10"
+                Clicked="UpdateButton_Clicked" />
+            <Button
+                Text="Відхилити"
+                BackgroundColor="Red"
+                Margin="10"
+                Clicked="RejectButton_Clicked" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

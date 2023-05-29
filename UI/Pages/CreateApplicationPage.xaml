@@ -1,91 +1,117 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UI.Pages.CreateApplicationPage"
-             Title="Створити заявку">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="UI.Pages.CreateApplicationPage"
+    Title="Створити заявку">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
-            <Label Text="Оберіть тип транспортного засобу" 
-                       FontSize="20"
-                       TextColor="#333333"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Padding="5"
-                       Margin="5"/>
-            <Picker x:Name="VehicleTypePicker"
-                        Title="Тип транспортного засобу"
-                        BackgroundColor="#F2F2F2"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        Margin="5"/>
-            <Label Text="Оберіть марку транспортного засобу" 
-                       FontSize="20"
-                       TextColor="#333333"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Padding="5"
-                       Margin="5"/>
-            <Picker x:Name="VehicleMarkPicker"
-                        Title="Марка транспортного засобу"
-                        BackgroundColor="#F2F2F2"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        Margin="5"/>
-            <Label Text="Оберіть колір транспортного засобу" 
-                       FontSize="20"
-                       TextColor="#333333"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Padding="5"
-                       Margin="5"/>
-            <Picker x:Name="VehicleColorPicker"
-                        Title="Колір транспортного засобу"
-                        BackgroundColor="#F2F2F2"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        Margin="5"/>
-            <Label Text="Оберіть тип правопорушення" 
-                       FontSize="20"
-                       TextColor="#333333"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Padding="5"
-                       Margin="5"/>
-            <Picker x:Name="ViolationPicker"
-                        Title="Тип правопорушення"
-                        BackgroundColor="#F2F2F2"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        Margin="5"/>
-            <Label Text="Опишіть номер транспортного засобу" 
-                       FontSize="20"
-                       TextColor="#333333"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Padding="5"
-                       Margin="5"/>
-            <Entry x:Name="VehicleNumberEntry"
-                       Placeholder="Номер"
-                       HorizontalTextAlignment="Center" 
-                       Keyboard="Text" 
-                       Margin="10" 
-                       BackgroundColor="#F2F2F2"/>
-            <Label Text="Оберіть час правопорушення" 
-                       FontSize="20"
-                       TextColor="#333333"
-                       HorizontalOptions="Start"
-                       VerticalOptions="Center"
-                       Padding="5"
-                       Margin="5"/>
+        <VerticalStackLayout
+            VerticalOptions="FillAndExpand">
+            <Label
+                Text="Оберіть тип транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="VehicleTypePicker"
+                Title="Тип транспортного засобу"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Оберіть марку транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="VehicleMarkPicker"
+                Title="Марка транспортного засобу"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Оберіть колір транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="VehicleColorPicker"
+                Title="Колір транспортного засобу"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Оберіть тип правопорушення"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Picker
+                x:Name="ViolationPicker"
+                Title="Тип правопорушення"
+                BackgroundColor="#F2F2F2"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="5" />
+            <Label
+                Text="Опишіть номер транспортного засобу"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
+            <Entry
+                x:Name="VehicleNumberEntry"
+                Placeholder="Номер"
+                HorizontalTextAlignment="Center"
+                Keyboard="Text"
+                Margin="10"
+                BackgroundColor="#F2F2F2" />
+            <Label
+                Text="Оберіть час правопорушення"
+                FontSize="20"
+                TextColor="#333333"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="5"
+                Margin="5" />
             <DatePicker
-                    x:Name="ViolationDate"
-                    HorizontalOptions="Fill"
-                    Margin="10" 
-                    BackgroundColor="#F2F2F2"
-                    TextColor="IndianRed"/>
-            <Entry Placeholder="Залиште коментар" x:Name="commentEntry" HorizontalTextAlignment="Center" Keyboard="Text" Margin="10" BackgroundColor="#F2F2F2"/>
-            <Button Text="Прикріпити файл" Margin="10" Clicked="ChooseFile_Clicked"/>
-            <Button Text="Надіслати" x:Name="SendButton" Margin="10" Clicked="SendButton_Clicked"/>
+                x:Name="ViolationDate"
+                HorizontalOptions="Fill"
+                Margin="10"
+                BackgroundColor="#F2F2F2"
+                TextColor="IndianRed" />
+            <Entry
+                Placeholder="Залиште коментар"
+                x:Name="commentEntry"
+                HorizontalTextAlignment="Center"
+                Keyboard="Text"
+                Margin="10"
+                BackgroundColor="#F2F2F2" />
+            <Button
+                Text="Прикріпити файл"
+                Margin="10"
+                Clicked="ChooseFile_Clicked" />
+            <Button
+                Text="Надіслати"
+                x:Name="SendButton"
+                Margin="10"
+                Clicked="SendButton_Clicked" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

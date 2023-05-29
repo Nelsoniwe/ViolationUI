@@ -12,6 +12,8 @@ public partial class UserProfilePage : ContentPage
 {
     private readonly HttpClient _httpClient;
     private int _userId;
+
+    private UserProfileModel selectedUser;
     public UserProfilePage(int id)
     {
         InitializeComponent();
@@ -28,16 +30,64 @@ public partial class UserProfilePage : ContentPage
         if (!userResponse.IsSuccessStatusCode)
         {
             SecureStorage.Default.RemoveAll();
-            await DisplayAlert("Помилка", userResponse.ReasonPhrase, "OK");
+            await DisplayAlert("Помилка", await userResponse.Content.ReadAsStringAsync(), "OK");
             await Shell.Current.Navigation.PopToRootAsync();
         }
 
-        var userProfile = JsonConvert.DeserializeObject<UserProfileModel>(await userResponse.Content.ReadAsStringAsync());
+        selectedUser = JsonConvert.DeserializeObject<UserProfileModel>(await userResponse.Content.ReadAsStringAsync());
 
-        FirstNameLabel.Text = userProfile.FirstName;
-        SecondNameLabel.Text = userProfile.LastName;
-        UserNameLabel.Text = userProfile.UserName;
-        EmailLabel.Text = userProfile.Email;
+        FirstNameLabel.Text = selectedUser.FirstName;
+        SecondNameLabel.Text = selectedUser.LastName;
+        UserNameLabel.Text = selectedUser.UserName;
+        EmailLabel.Text = selectedUser.Email;
     }
 
+    private async void UserApplicationsButton_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+            var connectionString = MauiProgram.ApiEndpoint + "/api/Application/ByUserId/" + selectedUser.Id;
+            HttpRequestMessage applicationsRequest = new HttpRequestMessage(HttpMethod.Get, connectionString);
+
+            HttpResponseMessage response = await _httpClient.SendAsync(applicationsRequest);
+            var _applications = JsonConvert.DeserializeObject<List<ApplicationModel>>(await response.Content.ReadAsStringAsync());
+
+            string role = await SecureStorage.Default.GetAsync("user_role");
+            bool isAdmin = false || role == "Admin";
+
+            var result = _applications.Select(x => new RepresentativeApplication()
+            {
+                Id = x.Id,
+                VehicleMarkId = x.VehicleMarkId,
+                VehicleMark = MauiProgram.Marks.First(y => y.Id == x.VehicleMarkId).Type,
+                ViolationId = x.ViolationId,
+                Violation = MauiProgram.Violations.First(y => y.Id == x.ViolationId).Type,
+                VehicleTypeId = x.VehicleTypeId,
+                VehicleType = MauiProgram.Types.First(y => y.Id == x.VehicleTypeId).Type,
+                VehicleColorId = x.VehicleColorId,
+                VehicleColor = MauiProgram.Colors.First(y => y.Id == x.VehicleColorId).Type,
+                VehicleNumber = x.VehicleNumber,
+                StatusId = x.StatusId,
+                Status = MauiProgram.Statuses.First(y => y.Id == x.StatusId).Status,
+                Geolocation = x.Geolocation,
+                PublicationTime = x.PublicationTime,
+                ViolationTime = x.ViolationTime,
+                UserId = x.UserId,
+                PhotoId = x.PhotoId,
+                VideoId = x.VideoId,
+                UserCanChange = x.StatusId == 1 && isAdmin,
+                UserComment = x.UserComment,
+                AdminComment = x.AdminComment
+            }).ToList();
+
+            if (!result.Any())
+                await DisplayAlert("Список заявок порожній", "", "OK");
+            else
+                await Navigation.PushAsync(new ApplicationListWithSearch(result.ToList()));
+        }
+        catch (Exception exception)
+        {
+            await DisplayAlert("Помилка", exception.Message, "OK");
+        }
+    }
 }
