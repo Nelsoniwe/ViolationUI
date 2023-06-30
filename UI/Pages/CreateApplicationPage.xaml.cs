@@ -245,7 +245,7 @@ public partial class CreateApplicationPage : ContentPage
         }
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         try
         {

@@ -39,22 +39,34 @@ public partial class ChangeApplicationDataPage : ContentPage
     private void OnVehicleNumberEntryChanged(object sender, TextChangedEventArgs e)
     {
         _vehicleNumber = e.NewTextValue;
+        VehicleNumberEntry.Background = String.IsNullOrEmpty(_vehicleNumber) ? Brush.Bisque : Brush.Default;
+
+        UpdateSendButtonState();
+
     }
+    private void UpdateSendButtonState()
+    {
+        ApproveButton.IsEnabled = !String.IsNullOrEmpty(VehicleNumberEntry.Text);
+        RejectButton.IsEnabled = !String.IsNullOrEmpty(VehicleNumberEntry.Text);
+        UpdateButton.IsEnabled = !String.IsNullOrEmpty(VehicleNumberEntry.Text);
+    }
+
 
     private async void ApproveButton_Clicked(object sender, EventArgs e)
     {
-        ChangeApplication("Approved");
+        ChangeApplication(3);
     }
 
     private async void UpdateButton_Clicked(object sender, EventArgs e)
     {
-        ChangeApplication(null);
+        ChangeApplication(0);
     }
 
     private async void RejectButton_Clicked(object sender, EventArgs e)
     {
-        ChangeApplication("Rejected");
+        ChangeApplication(2);
     }
+
 
     private async void DownloadAttachedFile_Clicked(object sender, EventArgs e)
     {
@@ -95,7 +107,7 @@ public partial class ChangeApplicationDataPage : ContentPage
         }
     }
 
-    private async void ChangeApplication(string status)
+    private async void ChangeApplication(int status)
     {
         try
         {
@@ -108,7 +120,7 @@ public partial class ChangeApplicationDataPage : ContentPage
                 VehicleTypeId = MauiProgram.Types.FirstOrDefault(x => x.Type == VehicleTypePicker.SelectedItem).Id,
                 VehicleColorId = MauiProgram.Colors.FirstOrDefault(x => x.Type == VehicleColorPicker.SelectedItem).Id,
                 VehicleNumber = _vehicleNumber,
-                StatusId = String.IsNullOrEmpty(status) ? _selectedItem.StatusId : MauiProgram.Statuses.FirstOrDefault(x => x.Status == status).Id,
+                StatusId = status == 0 ? _selectedItem.StatusId : status,
                 Geolocation = "string",
                 PublicationTime = PublicationDate.Date,
                 ViolationTime = ViolationDate.Date,
@@ -147,7 +159,7 @@ public partial class ChangeApplicationDataPage : ContentPage
         }
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         VehicleTypePicker.ItemsSource = MauiProgram.Types.Select(x => x.Type).ToList();
         VehicleColorPicker.ItemsSource = MauiProgram.Colors.Select(x => x.Type).ToList();

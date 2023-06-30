@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Maui.Controls;
+using Newtonsoft.Json;
 using System.Text;
+using System.Text.RegularExpressions;
 using UI.Models;
 
 namespace UI.Pages;
@@ -14,7 +16,64 @@ public partial class ProfilePage : ContentPage
 
         _httpClient = new HttpClient();
         CustomInitializeComponent();
+
+        EmailEntry.TextChanged += UserInfoChanged;
+        FirstNameEntry.TextChanged += UserInfoChanged;
+        SecondNameEntry.TextChanged += UserInfoChanged;
+        UserNameEntry.TextChanged += UserInfoChanged;
     }
+
+    private void UserInfoChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateCheck();
+    }
+
+
+    private void UpdateCheck()
+    {
+        bool buttonEnabled = true;
+        Regex regex = new Regex(MauiProgram.EmailPattern);
+        if (!regex.IsMatch(EmailEntry.Text))
+        {
+            buttonEnabled = false;
+            EmailEntry.Background = Brush.Bisque;
+        }
+        else
+        {
+            EmailEntry.Background = Brush.Default;
+        }
+        if(String.IsNullOrEmpty(FirstNameEntry.Text))
+        {
+            buttonEnabled = false;
+            FirstNameEntry.Background = Brush.Bisque;
+        }
+        else
+        {
+            FirstNameEntry.Background = Brush.Default;
+        }
+        if (String.IsNullOrEmpty(SecondNameEntry.Text))
+        {
+            buttonEnabled = false;
+            SecondNameEntry.Background = Brush.Bisque;
+        }
+        else
+        {
+            SecondNameEntry.Background = Brush.Default;
+        }
+        if (String.IsNullOrEmpty(UserNameEntry.Text))
+        {
+            buttonEnabled = false;
+            UserNameEntry.Background = Brush.Bisque;
+        }
+        else
+        {
+            UserNameEntry.Background = Brush.Default;
+        }
+
+        UpdateProfileButton.IsEnabled = buttonEnabled;
+    }
+
+    
 
     private void UpdateButton_Clicked(object sender, EventArgs e) => ChangeUserData();
     private async void UpdatePassword_Clicked(object sender, EventArgs e) => await Navigation.PushAsync(new ChangePasswordPage());
@@ -86,7 +145,7 @@ public partial class ProfilePage : ContentPage
         }
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         try
         {

@@ -11,6 +11,7 @@ public static class MauiProgram
     public static List<VehicleTypeModel> Types;
     public static List<ViolationModel> Violations;
     public static UserProfileModel UserProfile;
+    public static string EmailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
 
     public static MauiApp CreateMauiApp()
 	{

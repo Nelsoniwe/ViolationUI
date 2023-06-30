@@ -15,7 +15,7 @@ public partial class ChoosePage : ContentPage
         CustomInitializeComponent();
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         try
         {

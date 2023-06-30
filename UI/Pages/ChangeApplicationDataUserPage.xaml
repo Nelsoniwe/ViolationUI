@@ -103,6 +103,7 @@
             <Button
                 Text="Оновити"
                 Margin="10"
+                x:Name="UpdateButton"
                 Clicked="UpdateButton_Clicked" />
         </VerticalStackLayout>
     </ScrollView>

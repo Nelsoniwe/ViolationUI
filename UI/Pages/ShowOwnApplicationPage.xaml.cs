@@ -14,6 +14,11 @@ public partial class ShowOwnApplicationPage : ContentPage
     {
         InitializeComponent();
         _httpClient = new HttpClient();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
 
         CustomInitializeComponent();
     }
@@ -34,7 +39,7 @@ public partial class ShowOwnApplicationPage : ContentPage
         await Navigation.PushAsync(new ChangeApplicationDataUserPage(selectedItem));
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         try
         {

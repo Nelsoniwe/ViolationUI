@@ -37,11 +37,19 @@ public partial class ChangeApplicationDataUserPage : ContentPage
     private void OnVehicleNumberEntryChanged(object sender, TextChangedEventArgs e)
     {
         _vehicleNumber = e.NewTextValue;
+        VehicleNumberEntry.Background = String.IsNullOrEmpty(_vehicleNumber) ? Brush.Bisque : Brush.Default;
+
+        UpdateSendButtonState();
     }
 
     private async void UpdateButton_Clicked(object sender, EventArgs e)
     {
         ChangeApplication();
+    }
+
+    private void UpdateSendButtonState()
+    {
+        UpdateButton.IsEnabled = !String.IsNullOrEmpty(VehicleNumberEntry.Text);
     }
 
 
@@ -133,7 +141,7 @@ public partial class ChangeApplicationDataUserPage : ContentPage
         }
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         VehicleTypePicker.ItemsSource = MauiProgram.Types.Select(x => x.Type).ToList();
         VehicleColorPicker.ItemsSource = MauiProgram.Colors.Select(x => x.Type).ToList();

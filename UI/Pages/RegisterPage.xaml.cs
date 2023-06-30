@@ -35,8 +35,18 @@ public partial class RegisterPage : ContentPage
     {
         try
         {
-            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
-            Regex regex = new Regex(pattern);
+            Regex regex = new Regex(MauiProgram.EmailPattern);
+
+            if (    String.IsNullOrEmpty(_email)||
+            String.IsNullOrEmpty(_password) ||
+            String.IsNullOrEmpty(_username) ||
+            String.IsNullOrEmpty(_firstname) ||
+            String.IsNullOrEmpty(_lastname) ||
+            String.IsNullOrEmpty(_repeatPassword))
+            {
+                await DisplayAlert("Помилка", "Не всі поля заповнені", "OK");
+                return;
+            }
 
             if (!regex.IsMatch(_email))
             {
@@ -64,7 +74,17 @@ public partial class RegisterPage : ContentPage
             }
             else
             {
-                await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
+                var errorMessage = await response.Content.ReadAsStringAsync();
+
+                if (errorMessage.Contains("password"))
+                {
+                    await DisplayAlert("Помилка", "Неправильний пароль. Повинен містити принаймні 6 символів, одну велику літеру, одну малу літеру та спеціальний символ.", "OK");
+                    return;
+                }
+                else
+                {
+                    await DisplayAlert("Помилка", await response.Content.ReadAsStringAsync(), "OK");
+                }
             }
         }
         catch (Exception exception)
@@ -74,7 +94,23 @@ public partial class RegisterPage : ContentPage
     }
 
 
-    private void OnEmailTextChanged(object sender, TextChangedEventArgs e) => _email = e.NewTextValue;
+    private void OnEmailTextChanged(object sender, TextChangedEventArgs e)
+    {
+        _email = e.NewTextValue;
+
+        var frame = sender as Entry;
+        Regex regex = new Regex(MauiProgram.EmailPattern);
+
+        if (!regex.IsMatch(_email))
+        {
+            frame.Background = Brush.Bisque;
+        }
+        else
+        {
+            frame.Background = Brush.Default;
+        }
+    }
+    
 
     private void OnFirstnameTextChanged(object sender, TextChangedEventArgs e) => _firstname = e.NewTextValue;
 

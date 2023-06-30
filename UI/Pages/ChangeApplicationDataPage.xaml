@@ -132,15 +132,18 @@
                 Text="Схвалити"
                 BackgroundColor="Green"
                 Margin="10"
+                x:Name="ApproveButton"
                 Clicked="ApproveButton_Clicked" />
             <Button
                 Text="Оновити"
                 Margin="10"
+                x:Name="UpdateButton"
                 Clicked="UpdateButton_Clicked" />
             <Button
                 Text="Відхилити"
                 BackgroundColor="Red"
                 Margin="10"
+                x:Name="RejectButton"
                 Clicked="RejectButton_Clicked" />
         </VerticalStackLayout>
     </ScrollView>

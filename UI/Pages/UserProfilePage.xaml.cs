@@ -22,7 +22,7 @@ public partial class UserProfilePage : ContentPage
         CustomInitializeComponent();
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         var request = new HttpRequestMessage(HttpMethod.Get, MauiProgram.ApiEndpoint + "/api/User/Profile/"+ _userId);
         var userResponse = await _httpClient.SendAsync(request);

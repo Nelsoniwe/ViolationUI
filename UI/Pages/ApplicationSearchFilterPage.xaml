@@ -33,7 +33,7 @@
                 Margin="5" />
             <Picker
                 x:Name="StatusPicker"
-                Title="Тип транспортного засобу"
+                Title="Статус заявки"
                 BackgroundColor="#F2F2F2"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
@@ -91,13 +91,15 @@
                 VerticalOptions="Center"
                 Padding="5"
                 Margin="5" />
-            <Entry
-                x:Name="VehicleNumberEntry"
-                Placeholder="Введіть текст"
-                HorizontalTextAlignment="Center"
-                Keyboard="Text"
-                Margin="10"
-                BackgroundColor="#F2F2F2" />
+            <Frame>
+                <Entry
+                    x:Name="VehicleNumberEntry"
+                    Placeholder="Введіть текст"
+                    HorizontalTextAlignment="Center"
+                    Keyboard="Text"
+                    Margin="10"
+                    BackgroundColor="#F2F2F2" />
+            </Frame>
             <Label
                 Text="Введіть пошту користувача"
                 FontSize="20"

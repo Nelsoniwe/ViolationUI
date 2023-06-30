@@ -37,7 +37,7 @@ public partial class ApplicationSearchFilterPage : ContentPage
         _violationDate = e.NewDate;
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         VehicleTypePicker.ItemsSource = MauiProgram.Types.Select(x => x.Type).ToList();
         VehicleColorPicker.ItemsSource = MauiProgram.Colors.Select(x => x.Type).ToList();

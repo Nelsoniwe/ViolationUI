@@ -6,6 +6,7 @@ using UI.Pages;
 using UI.Models;
 using Microsoft.Maui.Storage;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -23,15 +24,17 @@ public partial class MainPage : ContentPage
         _httpClient = new HttpClient();
         ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateValidation;
 
+        
+        InitializeComponent();
+
         CheckCredentials();
         CustomInitializeComponent();
 
-        InitializeComponent();
         emailEntry.TextChanged += OnEmailTextChanged;
         passwordEntry.TextChanged += OnPasswordTextChanged;
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         var request = new HttpRequestMessage(HttpMethod.Get, MauiProgram.ApiEndpoint + "/api/User/Profile");
         string key = await SecureStorage.Default.GetAsync("api_token");
@@ -83,6 +86,18 @@ public partial class MainPage : ContentPage
     private void OnEmailTextChanged(object sender, TextChangedEventArgs e)
     {
         _email = e.NewTextValue;
+
+        var frame = sender as Entry;
+        Regex regex = new Regex(MauiProgram.EmailPattern);
+        
+        if (!regex.IsMatch(_email))
+        {
+            frame.Background = Brush.Bisque;
+        }
+        else
+        {
+            frame.Background = Brush.Default;
+        }
     }
 
     private void OnPasswordTextChanged(object sender, TextChangedEventArgs e)

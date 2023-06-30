@@ -110,6 +110,7 @@
         <Button
             Text="Оновити профіль"
             Margin="10"
+            x:Name="UpdateProfileButton"
             Clicked="UpdateButton_Clicked" />
         <Button
             Text="Оновити пароль"

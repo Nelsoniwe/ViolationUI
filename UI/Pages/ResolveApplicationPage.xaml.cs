@@ -40,7 +40,7 @@ public partial class ResolveApplicationPage : ContentPage
         CustomInitializeComponent();
     }
 
-    private async void CustomInitializeComponent()
+    private async Task CustomInitializeComponent()
     {
         try
         {
